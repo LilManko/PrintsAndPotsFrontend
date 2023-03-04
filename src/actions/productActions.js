@@ -29,11 +29,15 @@ import {
   PRODUCT_TOP_FAIL,
 } from "../constants/productConstants"
 
+
+const SERVER = "https://printsandpotsbackendapi.onrender.com"
+
+
 export const listProducts = (keyword = '') => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_LIST_REQUEST });
 
-    const { data } = await axios.get(`/api/products${keyword}`)
+    const { data } = await axios.get(`${SERVER}/api/products${keyword}`)
 
     dispatch({
       type: PRODUCT_LIST_SUCCESS,
@@ -53,7 +57,7 @@ export const listTopProducts = () => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_TOP_REQUEST });
 
-    const { data } = await axios.get(`/api/products/top/`)
+    const { data } = await axios.get(`${SERVER}/api/products/top/`)
 
     dispatch({
       type: PRODUCT_TOP_SUCCESS,
@@ -73,7 +77,7 @@ export const listProductDetails = (id) => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_DETAILS_REQUEST });
 
-    const { data } = await axios.get(`/api/products/${id}`)
+    const { data } = await axios.get(`${SERVER}/api/products/${id}`)
 
     dispatch({
       type: PRODUCT_DETAILS_SUCCESS,
@@ -107,7 +111,7 @@ export const deleteProduct = (id) => async (dispatch, getState) => {
     };
 
     // eslint-disable-next-line no-unused-vars
-    const { data } = await axios.delete(`/api/products/delete/${id}`, config);
+    const { data } = await axios.delete(`${SERVER}/api/products/delete/${id}`, config);
 
     dispatch({
       type: PRODUCT_DELETE_SUCCESS,
@@ -140,7 +144,7 @@ export const createProduct = () => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.post(`/api/products/create/`, {}, config);
+    const { data } = await axios.post(`${SERVER}/api/products/create/`, {}, config);
 
     dispatch({
       type: PRODUCT_CREATE_SUCCESS,
@@ -174,7 +178,7 @@ export const updateProduct = (product) => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.put(`/api/products/update/${product._id}/`, product, config);
+    const { data } = await axios.put(`${SERVER}/api/products/update/${product._id}/`, product, config);
 
     dispatch({
       type: PRODUCT_UPDATE_SUCCESS,
@@ -210,7 +214,7 @@ export const createProductReview = (productId, review) => async (dispatch, getSt
       },
     };
 
-    const { data } = await axios.post(`/api/products/${productId}/reviews/`, review, config);
+    const { data } = await axios.post(`${SERVER}/api/products/${productId}/reviews/`, review, config);
 
     dispatch({
       type: PRODUCT_CREATE_REVIEW_SUCCESS,

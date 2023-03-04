@@ -10,6 +10,9 @@ import { USER_LOGIN_REQUEST, USER_LOGIN_FAIL, USER_LOGIN_SUCCESS,
 import { ORDER_LIST_MY_RESET } from '../constants/orderConstants'
 
 
+const SERVER = "https://printsandpotsbackendapi.onrender.com"
+
+
 export const login = (email, password) => async (dispatch) => {
     try {
         dispatch({
@@ -22,11 +25,7 @@ export const login = (email, password) => async (dispatch) => {
             }
         }
 
-        const { data } = await axios.post(
-            '/api/users/login/',
-            { 'username': email, 'password': password },
-            config
-        )
+        const { data } = await axios.post(`${SERVER}/api/users/login/`,{ 'username': email, 'password': password },config)
 
         dispatch({
             type: USER_LOGIN_SUCCESS,
@@ -68,11 +67,7 @@ export const register = (name, email, password) => async (dispatch) => {
             }
         }
 
-        const { data } = await axios.post(
-            '/api/users/register/',
-            { 'name': name, 'email': email, 'password': password },
-            config
-        )
+        const { data } = await axios.post(`${SERVER}/api/users/register/`,{ 'name': name, 'email': email, 'password': password },config)
 
         dispatch({
             type: USER_REGISTER_SUCCESS,
@@ -115,7 +110,7 @@ export const getUserDetails = (id) => async (dispatch, getState) => {
         }
 
         const { data } = await axios.get(
-            `/api/users/${id}/`,
+            `${SERVER}/api/users/${id}/`,
             config
         )
 
@@ -152,11 +147,7 @@ export const updateUserProfile = (user) => async (dispatch, getState) => {
             }
         }
 
-        const { data } = await axios.put(
-            `/api/users/profile/update/`,
-            user,
-            config
-        )
+        const { data } = await axios.put(`${SERVER}/api/users/profile/update/`,user,config)
 
         dispatch({
             type: USER_UPDATE_PROFILE_SUCCESS,
@@ -197,10 +188,7 @@ export const listUsers = (user) => async (dispatch, getState) => {
             }
         }
 
-        const { data } = await axios.get(
-            `/api/users`,
-            config
-        )
+        const { data } = await axios.get(`${SERVER}/api/users`,config)
 
         dispatch({
             type: USER_LIST_SUCCESS,
@@ -235,10 +223,7 @@ export const deleteUser = (id) => async (dispatch, getState) => {
             }
         }
 
-        const { data } = await axios.delete(
-            `/api/users/delete/${id}/`,
-            config
-        )
+        const { data } = await axios.delete(`${SERVER}/api/users/delete/${id}/`,config)
 
         dispatch({
             type: USER_DELETE_SUCCESS,
@@ -273,11 +258,7 @@ export const updateUser = (user) => async (dispatch, getState) => {
             }
         }
 
-        const { data } = await axios.put(
-            `/api/users/update/${user._id}/`,
-            user,
-            config
-        )
+        const { data } = await axios.put(`${SERVER}/api/users/update/${user._id}/`,user,config)
 
         dispatch({
             type: USER_UPDATE_SUCCESS,
