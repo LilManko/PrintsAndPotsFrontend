@@ -203,7 +203,7 @@ export const listOrders = () => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.get(`https://printsandpotsbackendapi.onrender.com/api/orders/`, config);
+    const { data } = await axios.get(`/api/orders/`, config);
 
     dispatch({
       type: ORDER_LIST_SUCCESS,
