@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Row, Col, ListGroup, Image, Card, Button } from "react-bootstrap";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { PayPalButton } from "react-paypal-button-v2";
+import { PayPalButtons } from '@paypal/react-paypal-js'
 import Message from "../components/Message";
 import Loader from "../components/Loader";
 import {
@@ -208,7 +208,7 @@ function OrderScreen() {
                   {!sdkReady ? (
                     <Loader />
                   ) : (
-                    <PayPalButton
+                    <PayPalButtons
                       amount={order.totalPrice}
                       onSuccess={successPaymentHandler}
                     />
