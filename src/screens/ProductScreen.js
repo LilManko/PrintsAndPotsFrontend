@@ -45,7 +45,7 @@ function ProductScreen() {
   }, [dispatch, id, successProductReview]);
 
   const addToCartHandler = () => {
-    navigate(`${SERVER}/cart/${id}?qty=${qty}`);
+    navigate(`/cart/${id}?qty=${qty}`);
   };
 
   const submitHandler = (e) => {
