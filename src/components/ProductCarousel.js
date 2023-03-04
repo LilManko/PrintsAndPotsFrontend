@@ -6,6 +6,10 @@ import Loader from './Loader'
 import Message from './Message'
 import { listTopProducts } from '../actions/productActions'
 
+
+const SERVER = "https://printsandpotsbackendapi.onrender.com"
+
+
 function ProductCarousel() {
     const dispatch = useDispatch()
 
@@ -24,7 +28,7 @@ function ProductCarousel() {
                     {products.map(product => (
                         <Carousel.Item key={product._id}>
                             <Link to={`/product/${product._id}`}>
-                                <Image src={product.image} alt={product.name} fluid />
+                                <Image src={`${SERVER}${product.image}`} alt={product.name} fluid />
                                 <Carousel.Caption className='carousel.caption'>
                                     <h4>{product.name} (${product.price})</h4>
                                 </Carousel.Caption>
