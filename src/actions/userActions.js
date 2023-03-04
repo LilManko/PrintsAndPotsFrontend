@@ -274,7 +274,7 @@ export const updateUser = (user) => async (dispatch, getState) => {
         }
 
         const { data } = await axios.put(
-            `/api/users/update/${user._id}/`,
+            `https://printsandpotsbackendapi.onrender.com/api/users/update/${user._id}/`,
             user,
             config
         )

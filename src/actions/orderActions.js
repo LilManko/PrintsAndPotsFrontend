@@ -101,7 +101,7 @@ export const payOrder = (id, paymentResult) => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.put(`/api/orders/${id}/pay`,paymentResult, config);
+    const { data } = await axios.put(`https://printsandpotsbackendapi.onrender.com/api/orders/${id}/pay`,paymentResult, config);
 
     dispatch({
       type: ORDER_PAY_SUCCESS,
@@ -135,7 +135,7 @@ export const deliverOrder = (order) => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.put(`/api/orders/${order._id}/deliver/`,{}, config);
+    const { data } = await axios.put(`https://printsandpotsbackendapi.onrender.com/api/orders/${order._id}/deliver/`,{}, config);
 
     dispatch({
       type: ORDER_DELIVER_SUCCESS,
@@ -169,7 +169,7 @@ export const listMyOrders = () => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.get(`/api/orders/myorders/`, config);
+    const { data } = await axios.get(`https://printsandpotsbackendapi.onrender.com/api/orders/myorders/`, config);
 
     dispatch({
       type: ORDER_LIST_MY_SUCCESS,
@@ -203,7 +203,7 @@ export const listOrders = () => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.get(`/api/orders/`, config);
+    const { data } = await axios.get(`https://printsandpotsbackendapi.onrender.com/api/orders/`, config);
 
     dispatch({
       type: ORDER_LIST_SUCCESS,
