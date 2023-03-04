@@ -106,6 +106,7 @@ export const deleteProduct = (id) => async (dispatch, getState) => {
       },
     };
 
+    // eslint-disable-next-line no-unused-vars
     const { data } = await axios.delete(`/api/products/delete/${id}`, config);
 
     dispatch({
