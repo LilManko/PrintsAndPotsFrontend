@@ -9,8 +9,6 @@ import { listProductDetails, createProductReview } from "../actions/productActio
 import { PRODUCT_CREATE_REVIEW_RESET } from "../constants/productConstants";
 
 
-const SERVER = "https://printsandpotsbackendapi.onrender.com"
-
 function ProductScreen() {
   const [qty, setQty] = useState(1);
   const [rating, setRating] = useState(0);
